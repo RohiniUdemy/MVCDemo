@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MVCDemo.Models.Employee>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>Employees</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateEmployee", "Employee")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.employeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.confirmEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.confirmPassword)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.employeeId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.employeeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.age)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.confirmEmail)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Password)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.confirmPassword)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.employeeId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.employeeId }) |
+        @Html.ActionLink("Delete", "DeleteEmployee", new { id = item.employeeId },
+        new { onClick = "return confirm('Are you sure want to delete?');" })
+    </td>
+</tr>
+}
+
+</table>
